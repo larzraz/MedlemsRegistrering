@@ -1,0 +1,47 @@
+﻿<Window x:Class="MedlemsRegistrering.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:MVVM="clr-namespace:MedlemsRegistrering"
+        xmlns:local="clr-namespace:MedlemsRegistrering"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="membersViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Members}, CreateList=True}"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <MVVM:MainViewViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Button x:Name="CreateNew_Button" Content="Tilføj ny spiller" HorizontalAlignment="Left" Height="29" Margin="540,67,0,0" VerticalAlignment="Top" Width="143"/>
+        <Button x:Name="AddOneYear_Button" Content="Tilføj Ekstra år" HorizontalAlignment="Left" Height="29" Margin="540,112,0,0" VerticalAlignment="Top" Width="143"/>
+        <Button x:Name="RemoveOneYear_Button" Content="Fjern Ekstra år" HorizontalAlignment="Left" Height="29" Margin="540,161,0,0" VerticalAlignment="Top" Width="143"/>
+        <Label x:Name="MEN_Label" Content="Mænd" HorizontalAlignment="Left" Height="29" Margin="124,186,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMEN_Label" Content="Kvinder" HorizontalAlignment="Left" Height="29" Margin="262,186,0,0" VerticalAlignment="Top" Width="76"/>
+        <DataGrid x:Name="membersDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource membersViewSource}}" Margin="54,29,374.6,239" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="ageColumn" Binding="{Binding Age}" Header="Age" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="genderColumn" Binding="{Binding Gender}" Header="Gender" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="MENNumber_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="110,381,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMEN_Label_Copy" Content="Kvinder" HorizontalAlignment="Left" Height="29" Margin="262,186,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMENNumer_Label" Content="Kvinder" HorizontalAlignment="Left" Height="29" Margin="262,381,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="MENNumberage24_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="124,308,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="under12" Content="Under 12" HorizontalAlignment="Left" Height="29" Margin="25,215,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="Under18_laber" Content="13-18" HorizontalAlignment="Left" Height="29" Margin="25,262,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="Under24_Laber" Content="19-24" HorizontalAlignment="Left" Height="29" Margin="25,308,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="Under60" Content="25-60" HorizontalAlignment="Left" Height="29" Margin="25,342,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="MENNumberage18_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="124,262,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="MENNumberage12_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="124,215,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="MENNumberage60_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="124,342,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMENNumberage24_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="244,308,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMENNumberage18_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="244,262,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMENNumberage12_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="244,215,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="WOMENNumberage60_Label" Content="{Binding Men}" HorizontalAlignment="Left" Height="29" Margin="244,342,0,0" VerticalAlignment="Top" Width="76"/>
+
+    </Grid>
+</Window>
